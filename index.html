@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Banco Ejemplo</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="contact-info">
+        <span>+ (502) 1234 5678</span> |
+        <span><a href="mailto:info@bancoejemplo.com">info@bancoejemplo.com</a></span>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>#1 Banco Digital de Confianza</h1>
+        <p>Brindando soluciones financieras desde hace más de 25 años.</p>
+        <!-- Botón eliminado -->
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="horizontal-features">
+      <div class="card vision">
+        <div class="icono">🔍</div>
+        <h2>Visión</h2>
+        <p>Ser el banco más confiable e innovador que mejora la vida financiera de nuestros clientes.</p>
+      </div>
+      <div class="card mision">
+        <div class="icono">💡</div>
+        <h2>Misión</h2>
+        <p>Brindar servicios financieros de calidad con tecnología avanzada, accesible para todos.</p>
+      </div>
+      <div class="card objetivos">
+        <div class="icono">🎯</div>
+        <h2>Objetivos</h2>
+        <p>1. Facilitar el acceso a productos financieros digitales.<br>
+           2. Promover la educación financiera.<br>
+           3. Mantener un excelente servicio al cliente.
+        </p>
+      </div>
+    </div>
+
+    <div class="registro-boton">
+      <button id="btnMostrarRegistro" class="btn">Registrar</button>
+    </div>
+  </section>
+
+  <section class="form-section oculto" id="registro">
+    <div class="container">
+      <h2>Registro</h2>
+      <form onsubmit="return registrarUsuario(event)">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" placeholder="Nombre completo" required />
+
+        <label for="fecha">Fecha de nacimiento</label>
+        <input type="date" id="fecha" required />
+
+        <button type="submit">Registrarse</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Banco Ejemplo. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function generarNumero() {
+      return String(Math.floor(Math.random() * 9999) + 1).padStart(4, '0');
+    }
+
+    function registrarUsuario(event) {
+      event.preventDefault();
+      const numero = generarNumero();
+      alert("Usuario registrado exitosamente. Tu número de usuario es: " + numero);
+      document.querySelector('form').reset();
+    }
+
+    function mostrarFormulario() {
+      const registro = document.getElementById('registro');
+      registro.classList.remove('oculto');
+      registro.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('btnMostrarRegistro').addEventListener('click', function () {
+      mostrarFormulario();
+    });
+  </script>
+</body>
+</html>

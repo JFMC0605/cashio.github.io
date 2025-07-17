@@ -1,0 +1,188 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Topbar */
+.topbar {
+  background-color: #003d82;
+  color: white;
+  padding: 8px 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.topbar a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  background: url('https://images.unsplash.com/photo-1581092160612-d3fc945a0f20?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+  height: 90vh;
+  position: relative;
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 2.8em;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+}
+
+.btn {
+  background-color: #f4b400;
+  color: #000;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #d79900;
+}
+
+/* Features Section */
+.features {
+  padding: 60px 20px;
+  background-color: #2c3e50;
+  color: white;
+}
+
+.horizontal-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.features .card {
+  flex: 1 1 300px;
+  padding: 25px 20px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-align: center;
+  border-left: 6px solid #f4b400;
+}
+
+.features .vision {
+  border-left-color: #3498db;
+}
+
+.features .mision {
+  border-left-color: #f39c12;
+}
+
+.features .objetivos {
+  border-left-color: #2ecc71;
+}
+
+.features .icono {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.features h2 {
+  margin-bottom: 10px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
+}
+
+.features p {
+  font-size: 15px;
+  color: #ecf0f1;
+}
+
+.registro-boton {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Formulario */
+.form-section {
+  padding: 40px 20px;
+  background-color: #fff;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.form-section h2 {
+  text-align: center;
+  color: #003d82;
+  margin-bottom: 30px;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #003d82;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #003d82;
+  color: white;
+}
+
+/* Oculto */
+.oculto {
+  display: none;
+}
