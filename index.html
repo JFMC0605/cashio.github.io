@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Banco Ejemplo</title>
   <link rel="stylesheet" href="estilos.css" />
+  <style>
+    .oculto {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -21,7 +26,6 @@
       <div class="hero-content">
         <h1>#1 Banco Digital de Confianza</h1>
         <p>Brindando soluciones financieras desde hace más de 25 años.</p>
-        <!-- Botón eliminado -->
       </div>
     </div>
   </section>
@@ -41,9 +45,10 @@
       <div class="card objetivos">
         <div class="icono">🎯</div>
         <h2>Objetivos</h2>
-        <p>1. Facilitar el acceso a productos financieros digitales.<br>
-           2. Promover la educación financiera.<br>
-           3. Mantener un excelente servicio al cliente.
+        <p>
+          1. Facilitar el acceso a productos financieros digitales.<br>
+          2. Promover la educación financiera.<br>
+          3. Mantener un excelente servicio al cliente.
         </p>
       </div>
     </div>
@@ -72,16 +77,50 @@
     <p>&copy; 2025 Banco Ejemplo. Todos los derechos reservados.</p>
   </footer>
 
-  <script>
+  <!-- SDK de Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // 👇 CAMBIA ESTO por la configuración de tu propio proyecto Firebase
+    const firebaseConfig = {
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_DOMINIO.firebaseapp.com",
+      projectId: "TU_PROJECT_ID",
+      storageBucket: "TU_BUCKET.appspot.com",
+      messagingSenderId: "TU_MENSAJES_ID",
+      appId: "TU_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
     function generarNumero() {
       return String(Math.floor(Math.random() * 9999) + 1).padStart(4, '0');
     }
 
-    function registrarUsuario(event) {
+    async function registrarUsuario(event) {
       event.preventDefault();
-      const numero = generarNumero();
-      alert("Usuario registrado exitosamente. Tu número de usuario es: " + numero);
-      document.querySelector('form').reset();
+
+      const nombre = document.getElementById('nombre').value;
+      const fechaStr = document.getElementById('fecha').value;
+      const fecha = new Date(fechaStr);
+      const pin = generarNumero();
+
+      try {
+        await addDoc(collection(db, "usuarios"), {
+          nombre: nombre,
+          fechaNacimiento: Timestamp.fromDate(fecha),
+          pin: pin,
+          creado: Timestamp.now()
+        });
+
+        alert("✅ Usuario registrado exitosamente. Tu número de usuario es: " + pin);
+        document.querySelector('form').reset();
+      } catch (error) {
+        console.error("❌ Error al registrar:", error);
+        alert("Error al registrar: " + error.message);
+      }
     }
 
     function mostrarFormulario() {
@@ -90,9 +129,7 @@
       registro.scrollIntoView({ behavior: 'smooth' });
     }
 
-    document.getElementById('btnMostrarRegistro').addEventListener('click', function () {
-      mostrarFormulario();
-    });
+    document.getElementById('btnMostrarRegistro').addEventListener('click', mostrarFormulario);
   </script>
 </body>
 </html>
