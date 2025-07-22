@@ -121,7 +121,7 @@
           pin: pin
         });
 
-        await addDoc(collection(db, "usuarios"), {
+        await addDoc(collection(db, "registro"), {
           nombre: nombre,
           fechaNacimiento: Timestamp.fromDate(fecha),
           pin: pin,
