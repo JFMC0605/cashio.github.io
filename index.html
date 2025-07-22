@@ -82,16 +82,17 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    
-   const firebaseConfig = {
-  apiKey: "AIzaSyAtmxO1_nhAjBMFQu3woxR2VxQ7PkJfVrw",
-  authDomain: "cashiodb.firebaseapp.com",
-  projectId: "cashiodb",
-  storageBucket: "cashiodb.firebasestorage.app",
-  messagingSenderId: "911020371447",
-  appId: "1:911020371447:web:0da0d369df06d3331ed2f2",
-  measurementId: "G-WLW98628H2"
-};
+    // Tu configuración Firebase real:
+    const firebaseConfig = {
+      apiKey: "AIzaSyAtmxO1_nhAjBMFQu3woxR2VxQ7PkJfVrw",
+      authDomain: "cashiodb.firebaseapp.com",
+      projectId: "cashiodb",
+      storageBucket: "cashiodb.firebasestorage.app",
+      messagingSenderId: "911020371447",
+      appId: "1:911020371447:web:0da0d369df06d3331ed2f2",
+      measurementId: "G-WLW98628H2"
+    };
+
     // Inicializar Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
