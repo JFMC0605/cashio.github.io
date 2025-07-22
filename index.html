@@ -77,12 +77,12 @@
     <p>&copy; 2025 Banco Ejemplo. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- SDK de Firebase -->
+  <!-- SDK de Firebase + Lógica -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getFirestore, collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    // 👇 CAMBIA ESTO por la configuración de tu propio proyecto Firebase
+    // ✅ Reemplaza estos valores con tu configuración real de Firebase:
     const firebaseConfig = {
       apiKey: "TU_API_KEY",
       authDomain: "TU_DOMINIO.firebaseapp.com",
@@ -92,13 +92,19 @@
       appId: "TU_APP_ID"
     };
 
+    // Inicializar Firebase y Firestore
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
+    // ✅ Depuración: verificar que Firebase se inicializó correctamente
+    console.log("✅ Firebase inicializado:", app);
+
+    // Función para generar número aleatorio
     function generarNumero() {
       return String(Math.floor(Math.random() * 9999) + 1).padStart(4, '0');
     }
 
+    // Función para registrar usuario
     async function registrarUsuario(event) {
       event.preventDefault();
 
@@ -108,6 +114,13 @@
       const pin = generarNumero();
 
       try {
+        // ✅ Depuración: ver qué datos se van a registrar
+        console.log("📝 Registrando usuario:", {
+          nombre: nombre,
+          fechaNacimiento: fecha,
+          pin: pin
+        });
+
         await addDoc(collection(db, "usuarios"), {
           nombre: nombre,
           fechaNacimiento: Timestamp.fromDate(fecha),
@@ -118,11 +131,12 @@
         alert("✅ Usuario registrado exitosamente. Tu número de usuario es: " + pin);
         document.querySelector('form').reset();
       } catch (error) {
-        console.error("❌ Error al registrar:", error);
+        console.error("❌ Error al registrar en Firestore:", error);
         alert("Error al registrar: " + error.message);
       }
     }
 
+    // Mostrar formulario al hacer clic en "Registrar"
     function mostrarFormulario() {
       const registro = document.getElementById('registro');
       registro.classList.remove('oculto');
